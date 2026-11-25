@@ -16,13 +16,8 @@ import javax.swing.Scrollable;
 
 import com.nethit.ui.theme.AppTheme;
 
-/**
- * Kelas dasar semua halaman: header (judul + subjudul) di atas dan area konten
- * yang bisa di-scroll di bawahnya. Subclass mengisi konten lewat {@link #addCard()}.
- */
 public abstract class PagePanel extends JPanel {
 
-    /** Lebar teks paragraf agar baris otomatis terbungkus. */
     private static final int TEXT_WIDTH = 520;
 
     private final ScrollableContent content = new ScrollableContent();
@@ -63,7 +58,6 @@ public abstract class PagePanel extends JPanel {
         return header;
     }
 
-    /** Membuat kartu putih kosong, menambahkannya ke halaman, lalu mengembalikannya untuk diisi. */
     protected final Card addCard() {
         Card card = new Card();
         content.add(card);
@@ -71,7 +65,6 @@ public abstract class PagePanel extends JPanel {
         return card;
     }
 
-    /** Kartu sementara untuk halaman yang logikanya belum dibuat. */
     protected final void addComingSoonCard(String message) {
         Card card = addCard();
         card.add(createHeading("Segera hadir"));
@@ -87,7 +80,6 @@ public abstract class PagePanel extends JPanel {
         return label;
     }
 
-    /** Paragraf yang membungkus baris otomatis. Boleh berisi tag HTML sederhana seperti b dan br. */
     protected static JLabel createParagraph(String htmlText) {
         JLabel label = new JLabel("<html><body style='width:" + TEXT_WIDTH + "px'>"
                 + htmlText + "</body></html>");
@@ -97,7 +89,6 @@ public abstract class PagePanel extends JPanel {
         return label;
     }
 
-    /** Kartu putih dengan border tipis dan padding. */
     protected static class Card extends JPanel {
 
         Card() {
@@ -110,14 +101,12 @@ public abstract class PagePanel extends JPanel {
                             AppTheme.SPACE_XL, AppTheme.SPACE_XL)));
         }
 
-        /** Melebar penuh, tetapi tingginya tidak ikut diregangkan oleh BoxLayout. */
         @Override
         public Dimension getMaximumSize() {
             return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
         }
     }
 
-    /** Panel konten yang lebarnya mengikuti jendela dan tingginya mengikuti isi (scroll vertikal). */
     private static class ScrollableContent extends JPanel implements Scrollable {
 
         ScrollableContent() {

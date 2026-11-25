@@ -2,9 +2,6 @@ package com.nethit.ui.panels;
 
 import com.nethit.ui.components.ResultRow;
 
-/**
- * Halaman Tentang: deskripsi aplikasi, daftar fitur, dan informasi teknis.
- */
 public class AboutPanel extends PagePanel {
 
     private static final String APP_VERSION = "1.0.0 (dalam pengembangan)";
