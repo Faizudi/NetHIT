@@ -16,10 +16,6 @@ import javax.swing.JButton;
 
 import com.nethit.ui.theme.AppTheme;
 
-/**
- * Tombol bersudut membulat dengan efek hover dan pressed.
- * Style PRIMARY (biru) untuk aksi utama, SECONDARY (putih) untuk aksi pendukung seperti Reset.
- */
 public class PrimaryButton extends JButton {
 
     public enum Style { PRIMARY, SECONDARY }
@@ -102,7 +98,6 @@ public class PrimaryButton extends JButton {
             g2.drawRoundRect(0, 0, w - 1, h - 1, arc, arc);
         }
 
-        // Cincin fokus untuk pengguna keyboard
         if (isFocusOwner()) {
             g2.setColor(AppTheme.PRIMARY_RING);
             g2.setStroke(new BasicStroke(2f));
@@ -110,7 +105,7 @@ public class PrimaryButton extends JButton {
         }
 
         g2.dispose();
-        super.paintComponent(g); // menggambar teks
+        super.paintComponent(g);
     }
 
     private Color resolveFill() {

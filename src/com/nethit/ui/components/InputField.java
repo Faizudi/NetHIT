@@ -21,10 +21,6 @@ import javax.swing.event.DocumentListener;
 
 import com.nethit.ui.theme.AppTheme;
 
-/**
- * Field input dengan label di atas, placeholder, dan baris pesan di bawah
- * (untuk petunjuk atau pesan error). Border berubah saat fokus atau error.
- */
 public class InputField extends JPanel {
 
     private final JLabel titleLabel;
@@ -73,7 +69,6 @@ public class InputField extends JPanel {
         refreshAppearance();
     }
 
-    /** Teks input tanpa spasi di awal dan akhir. */
     public String getText() {
         return field.getText().trim();
     }
@@ -82,7 +77,6 @@ public class InputField extends JPanel {
         field.setText(text);
     }
 
-    /** Mengosongkan teks sekaligus menghapus pesan error. */
     public void clear() {
         field.setText("");
         clearError();
@@ -108,12 +102,10 @@ public class InputField extends JPanel {
         return hasError;
     }
 
-    /** Dipanggil saat pengguna menekan Enter di dalam field. */
     public void addActionListener(ActionListener listener) {
         field.addActionListener(listener);
     }
 
-    /** Dipanggil setiap teks berubah (dipakai untuk validasi real-time di Hari 11). */
     public void addTextChangeListener(Runnable listener) {
         field.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -137,7 +129,6 @@ public class InputField extends JPanel {
         field.requestFocusInWindow();
     }
 
-    /** Agar BoxLayout tidak meregangkan field secara vertikal. */
     @Override
     public Dimension getMaximumSize() {
         return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
@@ -146,7 +137,6 @@ public class InputField extends JPanel {
     private void refreshAppearance() {
         Color line = hasError ? AppTheme.ERROR : (focused ? AppTheme.PRIMARY : AppTheme.BORDER);
         int thickness = (hasError || focused) ? 2 : 1;
-        // Total ukuran border selalu sama, jadi field tidak bergeser saat fokus
         field.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(line, thickness),
                 BorderFactory.createEmptyBorder(10 - thickness, 14 - thickness, 10 - thickness, 14 - thickness)));
@@ -159,7 +149,6 @@ public class InputField extends JPanel {
         }
     }
 
-    /** JTextField yang menampilkan placeholder abu-abu saat kosong. */
     private static class PlaceholderTextField extends JTextField {
 
         private final String placeholder;

@@ -19,10 +19,6 @@ import com.nethit.ui.components.ResultRow;
 import com.nethit.ui.components.PrimaryButton.Style;
 import com.nethit.ui.theme.AppTheme;
 
-/**
- * Jendela demo untuk memeriksa tampilan AppTheme, PrimaryButton, InputField, dan ResultRow.
- * Hanya dipakai selama pengembangan.
- */
 public class ComponentDemo {
 
     public static void main(String[] args) {
@@ -40,7 +36,6 @@ public class ComponentDemo {
         root.setBorder(BorderFactory.createEmptyBorder(
                 AppTheme.SPACE_XXL, AppTheme.SPACE_XXL, AppTheme.SPACE_XXL, AppTheme.SPACE_XXL));
 
-        // ----- Kartu putih -----
         JPanel card = new JPanel();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
         card.setBackground(AppTheme.SURFACE);
@@ -59,12 +54,10 @@ public class ComponentDemo {
         subtitle.setForeground(AppTheme.TEXT_SECONDARY);
         subtitle.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        // ----- Input -----
         InputField ipField = new InputField("Alamat IPv4", "contoh: 192.168.1.10");
         ipField.setHint("Masukkan 4 angka (0-255) dipisah titik.");
         InputField prefixField = new InputField("Prefix CIDR", "contoh: 24");
 
-        // ----- Tombol -----
         PrimaryButton calcButton = new PrimaryButton("Hitung");
         PrimaryButton resetButton = new PrimaryButton("Reset", PrimaryButton.Style.SECONDARY);
         PrimaryButton errorButton = new PrimaryButton("Simulasi Error", PrimaryButton.Style.SECONDARY);
@@ -79,7 +72,6 @@ public class ComponentDemo {
         buttons.add(errorButton);
         buttons.setMaximumSize(new Dimension(Integer.MAX_VALUE, buttons.getPreferredSize().height));
 
-        // ----- Hasil -----
         JLabel resultHeading = new JLabel("HASIL");
         resultHeading.setFont(AppTheme.FONT_LABEL);
         resultHeading.setForeground(AppTheme.TEXT_SECONDARY);
@@ -91,7 +83,6 @@ public class ComponentDemo {
         broadcastRow.setDescription("Alamat terakhir sebuah jaringan, dipakai untuk mengirim ke semua perangkat.");
         ResultRow hostRow = new ResultRow("Jumlah Host");
 
-        // ----- Perilaku demo -----
         calcButton.addActionListener(e -> {
             ipField.clearError();
             if (ipField.getText().isEmpty()) {
@@ -116,7 +107,6 @@ public class ComponentDemo {
         errorButton.addActionListener(e ->
                 prefixField.showError("Prefix harus berupa angka 0 sampai 32."));
 
-        // ----- Susun kartu -----
         card.add(title);
         card.add(Box.createVerticalStrut(AppTheme.SPACE_XS));
         card.add(subtitle);

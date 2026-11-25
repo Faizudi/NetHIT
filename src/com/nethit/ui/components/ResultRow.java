@@ -9,10 +9,6 @@ import javax.swing.JPanel;
 
 import com.nethit.ui.theme.AppTheme;
 
-/**
- * Satu baris hasil perhitungan: nama di kiri, nilai di kanan (font monospace).
- * Contoh: "Network Address    192.168.10.64".
- */
 public class ResultRow extends JPanel {
 
     private static final String EMPTY_VALUE = "-";
@@ -55,18 +51,15 @@ public class ResultRow extends JPanel {
         return valueLabel.getText();
     }
 
-    /** Mengembalikan nilai ke tanda strip. */
     public void clear() {
         valueLabel.setText(EMPTY_VALUE);
     }
 
-    /** Penjelasan singkat yang muncul sebagai tooltip (diisi lengkap pada Hari 12). */
     public void setDescription(String description) {
         nameLabel.setToolTipText(description);
         valueLabel.setToolTipText(description);
     }
 
-    /** Agar BoxLayout tidak meregangkan baris secara vertikal. */
     @Override
     public Dimension getMaximumSize() {
         return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);

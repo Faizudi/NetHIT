@@ -9,13 +9,8 @@ import java.util.Set;
 
 import javax.swing.UIManager;
 
-/**
- * Pusat semua keputusan desain netHIT: warna, font, dan spacing.
- * Class ini tidak dibuat instance-nya, hanya menyediakan konstanta.
- */
 public final class AppTheme {
 
-    // ===== Warna =====
     public static final Color PRIMARY         = new Color(0x2563EB);
     public static final Color PRIMARY_HOVER   = new Color(0x1D4ED8);
     public static final Color PRIMARY_PRESSED = new Color(0x1E40AF);
@@ -41,7 +36,6 @@ public final class AppTheme {
     public static final Color ERROR           = new Color(0xDC2626);
     public static final Color SUCCESS         = new Color(0x16A34A);
 
-    // ===== Spacing (kelipatan 4 px) =====
     public static final int SPACE_XS = 4;
     public static final int SPACE_SM = 8;
     public static final int SPACE_MD = 12;
@@ -49,10 +43,8 @@ public final class AppTheme {
     public static final int SPACE_XL = 24;
     public static final int SPACE_XXL = 32;
 
-    /** Diameter sudut membulat untuk tombol dan kartu. */
     public static final int RADIUS = 10;
 
-    // ===== Font =====
     private static final String UI_FAMILY = pickFamily(Font.SANS_SERIF,
             "Segoe UI", "SF Pro Text", "Helvetica Neue", "Roboto");
     private static final String MONO_FAMILY = pickFamily(Font.MONOSPACED,
@@ -69,15 +61,12 @@ public final class AppTheme {
     private AppTheme() {
         // utility class
     }
-
-    /** Memasang pengaturan global (tooltip dan dialog) agar konsisten dengan tema. */
     public static void install() {
         UIManager.put("ToolTip.font", FONT_SMALL);
         UIManager.put("OptionPane.messageFont", FONT_BODY);
         UIManager.put("OptionPane.buttonFont", FONT_BODY);
     }
 
-    /** Mengembalikan nama font pertama yang terpasang, atau fallback jika tidak ada. */
     private static String pickFamily(String fallback, String... candidates) {
         Set<String> available = new HashSet<>(Arrays.asList(
                 GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()));
